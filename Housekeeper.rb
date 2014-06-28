@@ -1,7 +1,6 @@
-# File:     Housekeeper.rb
-# Author:   Daniel Middleton (daniel-middleton.com)
-# License:  GPL
-# Desc:     Housekeeper is a modular plugin-based script runner application
+# File:         Housekeeper.rb
+# Author:       Daniel Middleton (daniel-middleton.com)
+# Description:  Housekeeper is a modular plugin-based script runner application
 
 ################################## Configuration #################################
 
@@ -12,17 +11,20 @@ config_file = "conf/housekeeper.conf"
 ############################## No need to edit below ##############################
 
 # Required libraries
-require('optparse')
 require('colorize')
 require('net/smtp')
 require('yaml')
-require('pp')
+require('logger')
 
 # Generated absolute location of config file
 Config_file_full_path = "#{File.expand_path File.dirname(__FILE__)}/#{config_file}"
 
 # Program version
 Housekeeper_version   = '1.0'
+
+# Create logging object
+log_path = "#{File.expand_path File.dirname(__FILE__)}/logs/housekeeper.log"
+$logger = Logger.new(log_path, 0, 100 * 1024 * 1024)
 
 ###################################################################################
 # Method to take any string input and puts it with prepended timestamp
@@ -34,18 +36,27 @@ def print_line(input, type)
   if type == 'success'
 
     puts output.green
+    $logger.info(output)
 
   elsif type == 'info'
 
     puts output.blue
+    $logger.info(output)
 
   elsif type == 'warn'
 
     puts output.yellow
+    $logger.warn(output)
+
+  elsif type == 'error'
+
+    puts output.blue
+    $logger.error(output)
 
   else
 
     puts output.red
+    $logger.unknown(output)
 
   end
 
@@ -230,7 +241,7 @@ def main
   print_line('Parsing Plugin config to execute...', 'info')
 
   # For each Plugin, extract config and execute
-  begin
+  #begin
 
     $plugins.each_key do |plugin|
 
@@ -258,11 +269,11 @@ def main
 
     end
 
-  rescue
+  #rescue
 
-    report_error("#{__method__} - Error while executing Plugin.")
+    #report_error("#{__method__} - Error while executing Plugin.")
 
-  end
+  #end
 
   print_line('All Plugins executed successfully.', 'success')
 
