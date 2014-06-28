@@ -36,22 +36,22 @@ def print_line(input, type)
   if type == 'success'
 
     puts output.green
-    $logger.info(output)
+    $logger.info(input)
 
   elsif type == 'info'
 
     puts output.blue
-    $logger.info(output)
+    $logger.info(input)
 
   elsif type == 'warn'
 
     puts output.yellow
-    $logger.warn(output)
+    $logger.warn(input)
 
   elsif type == 'error'
 
     puts output.blue
-    $logger.error(output)
+    $logger.error(input)
 
   else
 
