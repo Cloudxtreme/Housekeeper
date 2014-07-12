@@ -2,7 +2,7 @@
 echo
 
 # Check dependancies
-echo 'Checking Housekeeper Dependancies...'
+echo 'Checking Housekeeper dependancies...'
 
 ## Ensure Ruby is installed
 ruby_version=$(ruby -v)
