@@ -4,9 +4,8 @@
 tested_ruby_version=2.1.1
 required_gems=(colorize net/smtp yaml logger)
 
-echo
-
 # Check dependancies
+echo
 echo 'Checking Housekeeper dependancies...'
 echo
 
@@ -53,10 +52,8 @@ for g in ${required_gems[@]}; do
     fi
 done
 
-## Gem version check to be implemented
-
 echo
 echo "Dependancies met. Please update 'conf/housekeeper.conf' and use 'ruby Housekeeper.rb' to run. It is also advisable to add Housekeeper as a shell alias."
-
 echo
+
 exit 0
