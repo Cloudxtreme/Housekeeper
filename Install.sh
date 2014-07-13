@@ -71,13 +71,27 @@ fi
 bad_version=$(awk "BEGIN{ print "${ruby_version}"<"${tested_ruby_version}" }")
 
 if [ ${bad_version} == 1 ]; then
-    echo "Ruby $ruby_version is not compatible with Housekeeper. Installing latest stable version..."
+    read -p "Ruby $ruby_version is not compatible with Housekeeper. Can I install the latest stable version using RVM? (yes/no): " upgrade_ruby_kb_reply
 
-    \curl -sSL https://get.rvm.io | bash -s stable --ruby
-    if [ $? -ne 0 ]; then
-        echo 'Could not install Ruby using RVM. Aborting...'
-        exit 1
-    fi
+    case ${upgrade_ruby_kb_reply} in
+        'yes')
+            \curl -sSL https://get.rvm.io | bash -s stable --ruby
+            if [ $? -ne 0 ]; then
+                echo 'Could not install Ruby using RVM. Aborting...'
+                exit 1
+            fi
+        ;;
+
+        'no')
+			echo 'Ruby will not be installed. Aborting...'
+			exit 0
+		;;
+
+		*)
+		    echo "Invalid response. Expecting 'yes' or 'no'. Aborting..."
+		    exit 1
+		;;
+    esac
 else
     echo "Ruby $tested_ruby_version found."
 fi
