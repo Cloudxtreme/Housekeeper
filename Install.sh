@@ -12,6 +12,35 @@ echo
 echo 'Checking Housekeeper dependancies...'
 echo
 
+## Ensure Git is installed
+git_version=$(git --version) > /dev/null 2>&1
+
+if [ $? -ne 0 ]; then
+    read -p 'No Git found. Can I install the latest stable version? (yes/no): ' install_git_kb_reply
+
+	case ${install_git_kb_reply} in
+		'yes')
+    		sudo apt-get install git
+    		if [ $? -ne 0 ]; then
+        		echo 'Could not install Git. Aborting...'
+        		exit 1
+    		fi
+    	;;
+
+		'no')
+			echo 'Git will not be installed. Aborting...'
+			exit 0
+		;;
+
+		*)
+		    echo "Invalid response. Expecting 'yes' or 'no'. Aborting..."
+		    exit 1
+		;;
+	esac
+else
+    echo 'Git is already installed.'
+fi
+
 ## Ensure Ruby is installed and at compatible version
 ruby_version=$(ruby -e 'print RUBY_VERSION') > /dev/null 2>&1
 
