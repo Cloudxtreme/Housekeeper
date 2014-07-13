@@ -3,7 +3,6 @@
 # Config
 tested_ruby_version=2.1.1
 required_gems=(colorize net/smtp yaml logger)
-install_directory='~/Housekeeper'
 
 echo
 
@@ -73,28 +72,21 @@ done
 ###############################################################################
 # Install Housekeeper
 
-## Create and enter installation directory
-mkdir $install_directory
+cd $HOME > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-    echo "Unable to create '$install_directory' directory. Aborting..."
-    exit 1
-fi
-
-cd $install_directory
-if [ $? -ne 0 ]; then
-    echo "Unable to enter '$install_directory' directory. Aborting..."
+    echo "Unable to enter '$HOME' directory. Aborting..."
     exit 1
 fi
 
 ## Git clone Housekeeper repo
 git clone https://github.com/daniel-middleton/Housekeeper.git
 if [ $? -ne 0 ]; then
-    echo "Unable to Git clone in '$install_directory' directory. Aborting..."
+    echo "Unable to Git clone in '$HOME' directory. Aborting..."
     exit 1
 fi
 
 echo
-echo "Installation complete.\nPlease update 'conf/housekeeper.conf' and use 'ruby Housekeeper.rb' to run.\nIt is also advisable to add Housekeeper as a shell alias."
+echo "Installation complete.Please update '$HOME/Housekeeper/conf/housekeeper.conf' and use 'ruby $HOME/Housekeeper/Housekeeper.rb' to run. It is also advisable to add Housekeeper as a shell alias."
 echo
 
 exit 0

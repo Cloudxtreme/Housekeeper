@@ -7,7 +7,7 @@ http://daniel-middleton.com
 Installation
 ============
 
-You can use the still primitive './Install.sh' script to ensure Housekeeper dependancies are met. Currently, this ensures Ruby is installed and that all Gem dependancies are met.
+There's no need to Git Clone! You can use the './Install.sh' script. This will ensure Housekeeper dependancies are met and automatically create and clone the repo to /home/Housekeeper.
 
 Configuration
 =============
