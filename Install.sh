@@ -13,13 +13,27 @@ echo
 ruby_version=$(ruby -e 'print RUBY_VERSION')
 
 if [ $? -ne 0 ]; then
-    echo 'No Ruby found. Installing latest stable version...'
+    read -p 'No Ruby found. Can I install the latest stable version? (yes/no)' install_ruby_kb_reply
+	
+	case $install_ruby_kb_reply in
+		'yes')
+    		\curl -sSL https://get.rvm.io | bash -s stable --ruby
+    		if [ $? -ne 0 ]; then
+        		echo 'Could not install Ruby using RVM. Aborting...'
+        		exit 1
+    		fi
+    		;;
 
-    \curl -sSL https://get.rvm.io | bash -s stable --ruby
-    if [ $? -ne 0 ]; then
-        echo 'Could not install Ruby using RVM. Aborting...'
-        exit 1
-    fi
+		'no')
+			echo 'Ruby will not be installed. Aborting...'
+			exit 0
+			;;
+
+		*)
+		    echo "Invalid response. Expecting 'yes' or 'no'. Aborting..."
+		    exit 1
+		    ;;
+	esac
 fi
 
 bad_version=$(awk "BEGIN{ print "$ruby_version"<"$tested_ruby_version" }")
