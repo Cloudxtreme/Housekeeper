@@ -7,7 +7,7 @@ http://daniel-middleton.com
 Installation
 ============
 
-There's no need to Git Clone! You can use the './Install.sh' script. This will ensure Housekeeper dependancies are met and automatically create and clone the repo to /home/Housekeeper.
+There's no need to Git clone! You can use the './Install.sh' script. This will ensure Housekeeper dependancies are met and automatically create and clone the repo to /home/Housekeeper.
 
 Configuration
 =============
