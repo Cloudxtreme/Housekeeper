@@ -92,7 +92,7 @@ MESSAGE_END
 
   rescue
 
-    print_line('More fuck, email notification could not be sent. You should tell an admin about this.', 'error')
+    print_line('Email notification could not be sent.', 'error')
 
   end
 
@@ -103,7 +103,7 @@ end
 
 def report_error(method)
 
-  content = "Fuck...it seems there was a problem during \'#{method}\'."
+  content = "There was a problem during \'#{method}\'."
 
   # Print error terminal
   print_line("#{content}", 'error')
@@ -184,7 +184,7 @@ def load_config
 
   rescue
 
-    print_line("Could not load config from \'#{Config_file_full_path}\'. You should tell an admin about this. Exiting...", 'error')
+    print_line("Could not load config from \'#{Config_file_full_path}\'. Exiting...", 'error')
     exit(1)
 
   end
@@ -218,8 +218,6 @@ def welcome
   puts "# Housekeeper is a modular plugin-based script runner application.             #"
   puts "# Written and maintained by Daniel Middleton (daniel-middleton.com) under GPL. #"
   puts "################################################################################"
-  puts "\n"
-  print_line("I\'m the Housekeeper. Please bare with me while I tidy your shit up...", 'info')
 
 end
 
