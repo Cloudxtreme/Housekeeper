@@ -241,7 +241,7 @@ def main
   print_line('Parsing Plugin config to execute...', 'info')
 
   # For each Plugin, extract config and execute
-  #begin
+  begin
 
     $plugins.each_key do |plugin|
 
@@ -269,11 +269,11 @@ def main
 
     end
 
-  #rescue
+  rescue
 
-    #report_error("#{__method__} - Error while executing Plugin.")
+    report_error("#{__method__} - Error while executing Plugin.")
 
-  #end
+  end
 
   print_line('All Plugins executed successfully.', 'success')
 
