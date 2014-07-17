@@ -145,7 +145,7 @@ fi
 echo "Adding 'housekeeper' Shell alias..."
 echo "alias housekeeper='ruby ~/Housekeeper/Housekeeper.rb' # Housekeeper alias added by Install.sh" >> ~/.bashrc
 if [ $? -ne 0 ]; then
-    echo "Unable to add Housekeeper to your PATH. Please do this manually."
+    echo "Unable to add alias to '~/.bashrc'. Please do this manually."
 else
     echo "Successfully added and loaded 'housekeeper' Shell alias."
 fi
