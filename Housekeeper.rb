@@ -216,7 +216,7 @@ def welcome
   puts "################################################################################"
   puts "# Housekeeper v#{Housekeeper_version}                                                             #"
   puts "# Housekeeper is a modular plugin-based script runner application.             #"
-  puts "# Written and maintained by Daniel Middleton (daniel-middleton.com) under GPL. #"
+  puts "# Written and maintained by Daniel Middleton (daniel-middleton.com). #"
   puts "################################################################################"
 
 end
@@ -302,6 +302,13 @@ def get_password_arg
     report_error("#{__method__} - Error while parsing argument.")
 
   end
+
+end
+
+###################################################################################
+# Method to detect the users distribution
+
+def detect_distro
 
 end
 
